@@ -3,6 +3,7 @@ import Navbar from '../Components/Navbar';
 import { useEffect } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import { get_lat_lon } from '../Operations/Lat_Lon';
 
 const Get_your_map = () => {
 
@@ -12,29 +13,10 @@ const Get_your_map = () => {
     const [longitude, setLongitude] = useState("");
 
     // Get Location
-    const getLocation = () => {
-        if ("geolocation" in navigator) {
-            navigator.geolocation.getCurrentPosition(
-                (position) => {
-                    console.log("Location is enabled.");
-                    setLatitude(position.coords.latitude);
-                    setLongitude(position.coords.longitude);
-                },
-                (error) => {
-                    if (error.code === error.PERMISSION_DENIED) {
-                        setMessage("Location access denied by the user")
-                    } else if (error.code === error.POSITION_UNAVAILABLE) {
-                        setMessage("Location information is unavailable.")
-                    } else if (error.code === error.TIMEOUT) {
-                        setMessage("The request to get user location timed out.");
-                    } else {
-                        setMessage("An unknown error occurred.");
-                    }
-                }
-            );
-        } else {
-            setMessage("Geolocation is not supported by this browser.");
-        }
+    const getLocation = async () => {
+        const {lat, lon} = await get_lat_lon()
+        setLatitude(lat)
+        setLongitude(lon)
     }
 
     // UseEffects

@@ -5,7 +5,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="w-full fixed top-0 left-0 z-50 bg-white/10 backdrop-blur-md border-b border-white/20 shadow-md">
+    <nav className="w-[95%] fixed top-5 left-1/2 transform -translate-x-1/2 z-50 bg-white/10 backdrop-blur-md border-b border-white/20 shadow-md rounded-2xl">
       <div className="max-w-7xl mx-auto flex justify-between items-center px-4 py-3 md:px-6">
 
         {/* Logo */}
@@ -19,7 +19,7 @@ const Navbar = () => {
 
         {/* Desktop Nav Links */}
         <ul className="hidden md:flex items-center gap-6 text-white font-medium">
-          {["Home", "Get your Map", "Dashboard", "Crop Disease", "Nearby Market"].map((item, index) => (
+          {["Home", "Get your Map", "Weather", "Dashboard", "Crop Disease", "Nearby Market"].map((item, index) => (
             <li key={index}>
               <NavLink
                 to={`/${item.charAt(0).toUpperCase() + item.slice(1).toLowerCase().replace(/ /g, '_')}`}

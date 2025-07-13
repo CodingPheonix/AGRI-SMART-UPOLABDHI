@@ -1,7 +1,7 @@
 import React from 'react'
 import Navbar from '../Components/Navbar'
 
-const Home = () => {
+const Nearby_market = () => {
     return (
         <div>
             <Navbar />
@@ -12,10 +12,10 @@ const Home = () => {
             />
 
             <div className='pt-30 px-10'>
-                hello, you are in home
+                hello, you are in Nearby_market
             </div>
         </div>
     )
 }
 
-export default Home
+export default Nearby_market

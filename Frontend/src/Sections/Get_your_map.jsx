@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Navbar from '../Components/Navbar';
 import { useEffect } from 'react';
+import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
 
 const Get_your_map = () => {
 
@@ -42,6 +44,23 @@ const Get_your_map = () => {
 
     }, [latitude, longitude])
 
+    useEffect(() => {
+        if (latitude && longitude && document.getElementById('map') && !document.getElementById('map')._leaflet_id) {
+            const map = L.map('map').setView([latitude, longitude], 13);
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution:
+                    '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+            }).addTo(map);
+
+            L.marker([latitude, longitude])
+                .addTo(map)
+                .bindPopup('📍 You are here!')
+                .openPopup();
+        }
+    }, [latitude, longitude]);
+
+
 
     return (
         <div className="relative min-h-screen">
@@ -67,6 +86,10 @@ const Get_your_map = () => {
 
                         <p className="text-sm italic text-green-700">{message}</p>
 
+                        {latitude && longitude && (
+                            <p className="text-md text-gray-600">Lat: {latitude} | Lon: {longitude}</p>
+                        )}
+
                         <div className="">
                             <button onClick={() => { getLocation() }} className="px-6 py-2 bg-green-600 text-white rounded-full shadow-md hover:bg-green-700 transition duration-200">
                                 Get Location
@@ -77,7 +100,11 @@ const Get_your_map = () => {
 
                     {/* Right Box – Map Display */}
                     <div className="w-full md:w-1/2 h-72 md:h-[400px] bg-white/30 backdrop-blur-lg border border-white/20 rounded-2xl shadow-2xl flex items-center justify-center text-gray-700">
-                        <span className="text-lg">🗺️ Map will appear here</span>
+                        {latitude.length === 0 && longitude.length === 0 ? (
+                            <div className="text-lg">🗺️ Map will appear here</div>
+                        ) : (
+                            <div id='map' className='h-full w-full overflow-hidden rounded-2xl'></div>
+                        )}
                     </div>
                 </div>
             </main>

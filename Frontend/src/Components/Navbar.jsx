@@ -62,7 +62,7 @@ const Navbar = () => {
             {["Home", "Get your Map", "Dashboard", "Crop Disease", "Nearby Market"].map((item, index) => (
               <li key={index}>
                 <NavLink
-                  to={`/${item.toLowerCase().replace(/ /g, '-')}`}
+                  to={`/${item.charAt(0).toUpperCase() + item.slice(1).toLowerCase().replace(/ /g, '_')}`}
                   className="block text-center hover:text-green-400 transition"
                   onClick={() => setIsOpen(false)}
                 >

@@ -139,7 +139,7 @@ const Get_your_map = () => {
 
             {/* Background Image */}
             <img
-                src="/clear.jpg"
+                src="/Get_your_map_bg.png"
                 alt="background_img"
                 className="absolute w-full h-full object-cover -z-50"
             />
@@ -149,7 +149,7 @@ const Get_your_map = () => {
                 <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-10 w-full">
 
                     {/* Left Box – Map Info */}
-                    <div className="w-full md:w-1/2 min-h-[400px] p-6  bg-white/30 backdrop-blur-lg rounded-2xl border border-white/20 shadow-2xl flex flex-col items-center justify-around gap-6">
+                    <div className="w-full md:w-1/2 min-h-[400px] p-6  bg-white/30 backdrop-blur-lg rounded-2xl border-2 border-white shadow-2xl flex flex-col items-center justify-around gap-6">
                         <div className="flex flex-col justify-around items-center gap-7">
                             <h2 className="text-3xl font-bold text-gray-800">🌍 Get your Map 🌍</h2>
                             <p className="text-base text-gray-700">Know your exact location within 2 minutes.</p>
@@ -193,7 +193,7 @@ const Get_your_map = () => {
 
 
                     {/* Right Box – Map Display */}
-                    <div className="w-full md:w-1/2 h-72 md:h-[400px] bg-white/30 backdrop-blur-lg border border-white/20 rounded-2xl shadow-2xl flex items-center justify-center text-gray-700">
+                    <div className="w-full md:w-1/2 h-72 md:h-[400px] bg-white/30 backdrop-blur-lg border-2 border-white rounded-2xl shadow-2xl flex items-center justify-center text-gray-700">
                         {latitude.length === 0 && longitude.length === 0 ? (
                             <div className="text-lg">🗺️ Map will appear here</div>
                         ) : (

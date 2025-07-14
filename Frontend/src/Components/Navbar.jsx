@@ -59,7 +59,7 @@ const Navbar = () => {
       {isOpen && (
         <div className="md:hidden bg-white/10 backdrop-blur-md px-6 pb-4 pt-2 rounded-b-2xl shadow-lg">
           <ul className="flex flex-col gap-4 text-white font-medium">
-            {["Home", "Get your Map", "Dashboard", "Crop Disease", "Nearby Market"].map((item, index) => (
+            {["Home", "Get your Map", "Weather", "Dashboard", "Crop Disease", "Nearby Market"].map((item, index) => (
               <li key={index}>
                 <NavLink
                   to={`/${item.charAt(0).toUpperCase() + item.slice(1).toLowerCase().replace(/ /g, '_')}`}

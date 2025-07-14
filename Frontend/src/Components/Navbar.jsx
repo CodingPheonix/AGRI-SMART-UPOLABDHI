@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router';
+import { NavLink, useLocation } from 'react-router';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const location = useLocation()
 
   return (
     <nav className="w-[95%] fixed top-5 left-1/2 transform -translate-x-1/2 z-50 bg-white/10 backdrop-blur-md border-b border-white shadow-md rounded-2xl">
@@ -23,7 +25,7 @@ const Navbar = () => {
             <li key={index}>
               <NavLink
                 to={`/${item.charAt(0).toUpperCase() + item.slice(1).toLowerCase().replace(/ /g, '_')}`}
-                className="relative transition-all duration-200 ease-in-out hover:-translate-y-1 hover:text-green-400 after:absolute after:left-0 after:bottom-0 after:h-[3px] after:w-full after:rounded-full after:bg-green-500 after:opacity-0 hover:after:opacity-100"
+                className={`relative transition-all duration-200 ease-in-out hover:-translate-y-1 hover:text-green-400 after:absolute after:left-0 after:bottom-0 after:h-[3px] after:w-full after:rounded-full after:bg-green-500 after:opacity-0 hover:after:opacity-100 ${location.pathname === `/${item.charAt(0).toUpperCase() + item.slice(1).toLowerCase().replace(/ /g, '_')}` ? 'text-green-600' : 'text-white'}`}
               >
                 {item}
               </NavLink>
@@ -63,7 +65,7 @@ const Navbar = () => {
               <li key={index}>
                 <NavLink
                   to={`/${item.charAt(0).toUpperCase() + item.slice(1).toLowerCase().replace(/ /g, '_')}`}
-                  className="block text-center hover:text-green-400 transition"
+                  className={`block text-center hover:text-green-400 transition ${location.pathname === `/${item.charAt(0).toUpperCase() + item.slice(1).toLowerCase().replace(/ /g, '_')}` ? 'text-green-600' : 'text-white'}`}
                   onClick={() => setIsOpen(false)}
                 >
                   {item}

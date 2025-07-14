@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route } from "react-router";
 import './index.css'
 
 import App from './App.jsx'
-import Home from './Sections/Home.jsx';
 import Get_your_map from './Sections/Get_your_map.jsx';
 import Weather from './Sections/Weather.jsx';
 import Dashboard from './Sections/Dashboard.jsx';
@@ -14,7 +13,7 @@ createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<App />} />
-      <Route path="/home" element={<Home />} />
+      <Route path="/home" element={<App />} />
       <Route path="/Get_your_map" element={<Get_your_map />} />
       <Route path="/Weather" element={<Weather />} />
       <Route path="/Dashboard" element={<Dashboard />} />

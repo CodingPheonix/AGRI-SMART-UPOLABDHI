@@ -32,7 +32,7 @@ const Weather = () => {
 
     // API Calls
     const get_current_weather = async (params) => {
-        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${import.meta.env.VITE_WEATHER_API_KEY}`)
+        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/get_current_weather`)
         const result = await response.json()
         console.log(result)
         setWeather_data({
@@ -53,7 +53,7 @@ const Weather = () => {
             wind_speed: result.wind.speed
         })
     }
-    
+
 
     const getLocation = async () => {
         const { lat, lon } = await get_lat_lon()
